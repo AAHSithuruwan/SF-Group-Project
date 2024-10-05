@@ -164,7 +164,6 @@
 
 
 
-                <li class="nav-item"> <a class="nav-link" href="About-us.php" title="About us">About us&nbsp;</a> </li>
                 <li class="nav-item"> <a class="nav-link" href="contact-us.php" title="Contact us">Contact us&nbsp;</a> </li>
 
 
