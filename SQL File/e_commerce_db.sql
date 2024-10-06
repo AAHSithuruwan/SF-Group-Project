@@ -382,7 +382,7 @@ CREATE TABLE `user` (
   `address` varchar(150) DEFAULT NULL,
   `adminOrCustomer` tinyint(1) DEFAULT NULL,
   `deletedUser` tinyint(1) DEFAULT NULL,
-  `gender` varchar(1) NOT NULL,
+  `gender` varchar(1),
   `firstName` varchar(100) NOT NULL,
   `lastName` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
