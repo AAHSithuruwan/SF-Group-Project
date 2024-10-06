@@ -10,7 +10,7 @@
     <link href="css/cart.css" rel="stylesheet" type="text/css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"> -->
 </head>
 <body>
     <?php include_once 'header.php'; ?>
@@ -71,7 +71,9 @@
                                             <td><input type="text" class="qty-input" name="qty[' . $record['itemId'] . ']" value="' . $record["cartQuantity"] . '"></td>
                                             <td>' . $itemDet["sellingPrice"] * $record["cartQuantity"] . '</td>
                                             <td>
-                                                <button type="submit" name="remove" formaction="Cart-Update-Query.php?itemId='.$record['itemId'].'" class="btn-close" aria-label="Close"></button>
+                                                <button type="submit" name="remove" formaction="Cart-Update-Query.php?itemId='.$record['itemId'].'" class="close" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
                                                 <input type="hidden" name="itemIds[]" value="' . $record['itemId'] . '">
                                             </td>
                                         </tr>
@@ -121,6 +123,7 @@
                         }
                         echo '</div>';
                     ?>
+                    </div>
                 </form>
             </div>
         </div>
@@ -128,10 +131,10 @@
     
     <?php include_once 'footer.php'; ?>
     
-    <!-- <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap-4.4.1.js"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap-4.4.1.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> -->
 
 </body>
 </html>
