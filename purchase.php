@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+     <!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -22,29 +22,45 @@
             <form class="pdetails" name="pdetails" action="includes/purchase.inc.php" method="post" onsubmit="return validatePurchase()">
                 <table>
                     <tr>
-                        <td>Total Amount</td>
+                        <td><b>Total Amount</b></td>
                         <td><?php echo $_POST['total-amount']?></td>
                     </tr>
+                   
                     <tr>
-                        <td>Discount</td>
+                        <td><b>Discount</b></td>
                         <td><?php echo $_POST['discount']?></td>
                     </tr>
+                    <secssion calss="box">
                     <tr>
-                        <td colspan="2">Card Details,</td>
+                        <td colspan="2"><center><h3>Card Details</h3></center></td>
                     </tr>
+
                     <tr>
                         <td>Card Number</td>
-                        <td><input type="text" name="c-number" id="cNumber"></td>
+                        <td><input type="text" name="c-number" id="cNumber" placeholder="Enter Card Number "></td>
 
                     </tr>
                     <tr>
-                        <td>CVV</td>
-                        <td><input type="text" name="cvv"></td>
+                        <td>Exp. Month</td>
+                        <td> <input type="text" id="exp-month" name="exp-month" placeholder="Enter exp Month "></td>
+                    </tr>
+                    <tr>
+                        <td>cvv</td>
+                        <td><input type="text" id="cVV-number" name="cVV-no" placeholder="Enter Card cvv " ></td>
+                    </tr>
+                    <tr>
+                    <td>Buyer Name</td>
+                    <td><input type="text" id="buyer-Name" name="b-Name" placeholder="Enter Byer Name " ></td>
+                    </tr>
+                    <tr>
+                        <td>Buyer Address</td>
+                        <td><input type="text"id="bYER-aDDRESS" name="baDDRESS" placeholder="Enter Byer Name "></td>
 
                     </tr>
+        
                     <tr>
                         <td></td>
-                        <td><input type="submit" class="btn btn-success" value="Pay" name="payBtn"></td>
+                       <td> <center><input type="submit" class="btn btn-success" value="Pay" name="payBtn"></center></td>
                     </tr>
                 </table>
             </form>
@@ -57,3 +73,4 @@
     <script src="js/bootstrap-4.4.1.js"></script>
     </body>
     </html>
+
