@@ -26,6 +26,12 @@
                     echo "<script> alert('Authentication Sucessfully completed !'); </script>";
                     $_SESSION['log_name'] = $user['userName'];
                     $_SESSION['log_id'] = $user['userId'];
+
+                    //set the session variable for the cwId of the user
+                    $cwIdSql = "SELECT cwId FROM cartwishlist WHERE userId = " . $_SESSION['log_id'];
+                    $cwIdSqlResult = mysqli_query($conn, $cwIdSql);
+                    $cwId = mysqli_fetch_assoc($cwIdSqlResult);
+                    $_SESSION['cwId'] = $cwId['cwId'];
                     header('Location:../index.php');
                 }else{
                     $errors [] = "Invalid Username or Password !";

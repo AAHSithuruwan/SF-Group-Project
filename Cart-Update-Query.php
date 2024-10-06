@@ -1,43 +1,168 @@
-<?php 
-  session_start();
+<?php
+// session start
+session_start();
+// Include database connection
+include_once 'includes/dbConn.inc.php';
+
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    // redirect to the login page if the cwId session is not set
+    if (!isset($_SESSION['cwId'])) {
+        header("Location: signin.php");
+    }
+
+
+    if (isset($_POST['update'])) {
+        // Retrieve the array of item IDs
+        $itemIds = $_POST['itemIds'];
+
+        // Assuming you have the cwId available in the POST data                
+        $cwId = $_SESSION['cwId'];  
+        
+        // Loop through each item ID and update the quantity
+        foreach ($itemIds as $itemId) {
+            // Get the corresponding quantity for the current item ID
+            $quantity = $_POST['qty'][$itemId];
+
+            // Update the cart item in the database
+            updateCartItem($conn, $cwId, $itemId, $quantity);
+
+        }
+
+        // redirect to the cart page
+        header("Location: cart.php");
+    }
+
+    // Check if the "Remove Item" button was clicked
+    elseif (isset($_POST['remove'])) {
+        // Get the item ID from the query string
+        $itemId = $_GET['itemId'];
+
+        // Assuming you have the cwId available in the POST data                
+        $cwId = $_SESSION['cwId'];  
+
+        // Delete the cart item from the database
+        deleteCartItem($conn, $cwId, $itemId);
+
+        // redirect to the cart page
+        header("Location: cart.php");
+    }
+
+    elseif (isset($_POST['add-qty'])) {
+        // Get the item ID from the form data
+        $itemId = $_POST['item-id'];
+
+        // Assuming you have the cwId available in the POST data                
+        $cwId = $_SESSION['cwId'];  
+
+        // Get the quantity from the form data
+        $quantity = $_POST['qty'];
+
+        // Add the item to the cart in the database
+        addQuantityToCartItem($conn, $cwId, $itemId, $quantity);
+
+        // redirect to the cart page
+        header("Location: cart.php");
+    }
+
+    
+}
+
+/**
+ * Function to update the cart item quantity in the database
+ *
+ * @param mysqli $conn The database connection
+ * @param int $itemId The ID of the item to update
+ * @param int $quantity The new quantity for the item
+ * @return void
+ */
+function updateCartItem($conn,$cwId, $itemId, $quantity) {
+    // Prepare an update query
+    $updateQuery = "UPDATE itemcartwishlist SET cartQuantity = ? WHERE itemId = ? AND cwId = ?";
+    
+    // Using prepared statements to prevent SQL injection
+    $stmt = mysqli_prepare($conn, $updateQuery);
+    
+    
+    
+    // Bind parameters
+    mysqli_stmt_bind_param($stmt, 'iii', $quantity, $itemId, $cwId);
+    
+    // Execute the statement
+    if (mysqli_stmt_execute($stmt)) {
+        // echo "Item ID: $itemId updated successfully with quantity: $quantity<br>";
+    } else {
+        echo "Error updating item ID: $itemId - " . mysqli_stmt_error($stmt) . "<br>";
+    }
+
+    // Close the statement
+    mysqli_stmt_close($stmt);
+}
+
+function deleteCartItem($conn,$cwId, $itemId) {
+    // Prepare a delete query
+    $deleteQuery = "DELETE FROM itemcartwishlist WHERE itemId = ? AND cwId = ?";
+    
+    // Using prepared statements to prevent SQL injection
+    $stmt = mysqli_prepare($conn, $deleteQuery);
+    
+    // Bind parameters
+    mysqli_stmt_bind_param($stmt, 'ii', $itemId, $cwId);
+    
+    // Execute the statement
+    if (mysqli_stmt_execute($stmt)) {
+        // echo "Item ID: $itemId deleted successfully<br>";
+    } else {
+        echo "Error deleting item ID: $itemId - " . mysqli_stmt_error($stmt) . "<br>";
+    }
+
+    // Close the statement
+    mysqli_stmt_close($stmt);
+}
+
+function addQuantityToCartItem($conn,$cwId, $itemId, $quantity) {
+
+    // print all parameters
+    echo 'cwId: '.$cwId.' itemId: '.$itemId.' quantity: '.$quantity;
+
+    // check wherher the item is already in the cart or not
+    $query = "SELECT * FROM itemcartwishlist WHERE cwId = $cwId AND itemId = $itemId";
+    
+    $result = mysqli_query($conn, $query);
+
+    if (mysqli_num_rows($result) > 0) {
+        // Item is already in the cart, update the quantity
+        $row = mysqli_fetch_assoc($result);
+        $newQuantity = $row['cartQuantity'] + $quantity;
+        updateCartItem($conn, $cwId, $itemId, $newQuantity);
+
+
+    } else {
+
+        // echo 'Item is not in the cart';
+
+        // Item is not in the cart, add it with the given quantity
+        $insertQuery = "INSERT INTO itemcartwishlist (cwId, itemId, cartQuantity, cart) VALUES (?, ?, ?, 1)";
+        
+        // Using prepared statements to prevent SQL injection
+        $stmt = mysqli_prepare($conn, $insertQuery);
+        
+        // Bind parameters
+        mysqli_stmt_bind_param($stmt, 'iii', $cwId, $itemId, $quantity);
+        
+        // Execute the statement
+        if (mysqli_stmt_execute($stmt)) {
+            // echo "Item ID: $itemId added successfully with quantity: $quantity<br>";
+        } else {
+            echo "Error adding item ID: $itemId - " . mysqli_stmt_error($stmt) . "<br>";
+        }
+    
+        // Close the statement
+        mysqli_stmt_close($stmt);
+    }
+}
+
+// Close the database connection
+mysqli_close($conn);
 ?>
-
-<html>
-    <body>
-        <?php
-            include 'includes/dbConn.inc.php';
-
-            //Check if the user has been logged in
-                if(!isset($_SESSION['log_id'])){
-                    header('Location: index.php?error=error');
-                }
-                //
-
-
-            //get the cart id
-                include_once 'includes/dbConn.inc.php';
-                $sql = "select cwId from cartwishlist where userId = ".$_SESSION['log_id'];
-                $result = mysqli_query($conn,$sql);
-                $record = mysqli_fetch_assoc($result);
-
-                $query = "select cartQuantity from itemcartwishlist where cwId = ".$record['cwId']." and itemId = ".$_POST['item-id']."";
-                $queryResult = mysqli_query($conn,$query);
-                if($queryResultRecord = mysqli_fetch_assoc($queryResult)){
-                        $updateQtySql = "update itemcartwishlist set cartQuantity = ".$_POST['qty']+$queryResultRecord['cartQuantity']." where cwId = ".$record['cwId']." and itemId = ".$_POST['item-id']."";
-                        mysqli_query($conn,$updateQtySql);
-                        echo '<script>alert("Item Quantity Updated");</script>';
-                        echo "<script>window.location.replace('http://mobileplanet.lovestoblog.com')</script>";
-                }else{
-                    $addToCart = "INSERT INTO itemcartwishlist(itemId,cwId,cart,cartQuantity) VALUES(".$_POST['item-id'].",".$record['cwId'].",1,".$_POST['qty'].")";
-                    if($conn->query($addToCart) == TRUE)
-                    {
-                        echo '<script>alert("Item has been added to the cart");</script>';
-                        echo "<script>window.location.replace('http://mobileplanet.lovestoblog.com')</script>";
-                    }
-
-                }
-               
-        ?>
-    </body>
-</html>
-

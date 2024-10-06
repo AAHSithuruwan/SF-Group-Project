@@ -9,32 +9,20 @@
 	}
 }
 
-  @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,300;10..48,400&family=Manrope&display=swap');
-    body{
-        font-family: 'Bricolage Grotesque', sans-serif;
-        font-family: 'Manrope', sans-serif;
-    }
-.carttable table{
-    width: 100%;  
-    height: 50vh;
-    text-align: center;
-    border: 1px solid grey;
-}
-.carttable table tr th{
-    border: 1px solid grey;
-}
-.carttable table tr td{
-    border: 1px solid grey;
+#cart-update-btn{
+    float: right;
 }
 
-.buttons{
+.qty-input{
     border: none;
-    border-radius: 30px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    background-color: blue;
-    color: white;
-    width: 20%;
-    height: 60px;
-    margin-left: 8%;
+    background-color: rgb(240, 240, 240);
+    width: 100px;
+    padding: 7px 7px;
+    border-radius: 5px;
 }
+
+#total-amount{
+    font-weight: bold;
+}
+
+
