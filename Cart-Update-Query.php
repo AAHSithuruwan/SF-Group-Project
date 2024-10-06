@@ -7,6 +7,11 @@ include_once 'includes/dbConn.inc.php';
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    // redirect to the login page if the cwId session is not set
+    if (!isset($_SESSION['cwId'])) {
+        header("Location: signin.php");
+    }
+
 
     if (isset($_POST['update'])) {
         // Retrieve the array of item IDs
