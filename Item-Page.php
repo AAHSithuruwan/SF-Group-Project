@@ -84,7 +84,7 @@
 				<form name="validateCart" action="Cart-Update-Query.php" method="post" onsubmit="return validateQTY()">
 					Qty: &nbsp; &nbsp; <input type="text" name="qty"><br><br>
 					<input type="hidden" name="item-id" value="<?php echo $_POST['item-id'];?>">
-                    <input type="submit" class="btn btn-primary btn-lg"  id="b2" name="sub" value="Add to Cart">
+                    <input type="submit" name="add-qty" class="btn btn-primary btn-lg"  id="b2" value="Add to Cart">
 				</form>
                 </p>
             </div>
