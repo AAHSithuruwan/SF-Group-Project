@@ -9,23 +9,6 @@
 	}
 }
 
-  @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,300;10..48,400&family=Manrope&display=swap');
-    body{
-        font-family: 'Bricolage Grotesque', sans-serif;
-        font-family: 'Manrope', sans-serif;
-    }
-/* .carttable table{
-    width: 100%;  
-    text-align: center;
-    border: 1px solid grey;
-}
-.carttable table tr th{
-    border: 1px solid grey;
-}
-.carttable table tr td{
-    border: 1px solid grey;
-} */
-
 #cart-update-btn{
     float: right;
 }
@@ -41,4 +24,5 @@
 #total-amount{
     font-weight: bold;
 }
+
 
