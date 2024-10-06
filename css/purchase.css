@@ -1,31 +1,118 @@
+/* General Styles */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+	background-image: image-set(url("/assets/purchaseimages/ph4.jpg"));
+     /* Replace with the path to your image */
+    background-size:2790px; /* Makes the background cover the entire area */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+	
+}
+
+
+/* Wrapper for content */
+.body-wrapper {
+	
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Ensures content is vertically centered */
+    align-items: center;
+    min-height: calc(100vh - 50px); /* Leaves space for the footer */
+}
+
+/* Payment Wrapper */
 .payment-wrapper {
-	padding-top: 130px;
-	/*background-color: red;*/
+	opacity: 70%;
 	display: flex;
-	justify-content: center;
+    flex-direction: column;
+    padding: 10%; /* Adjusted padding for consistency */
+    width: 50%;    /* You can set this to a specific px value or a different percentage */
+    max-width: 800px; /* Maximum width of the form wrapper */
+    align-items: center;
+    margin: 50px auto; /* Center the wrapper horizontally and adjust top margin */
+	border-radius: 3opx;
 }
 
-@media screen and (max-width : 992px) {
-	.payment-wrapper{
-		padding-top: 170px;
-	}
+@media screen and (max-width: 600px) {
+    .payment-wrapper {
+    border: 2px solid #000;
+    padding: 40px;
+    border-radius: 10px;
+    width: 100%;       /* 100% of the wrapper width */
+    max-width: 600px;  /* Maximum width of the form */
+    height: 50%;      /* Set to auto for dynamic height, or specify a fixed height (e.g., 500px) */
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    }
 }
 
-.pdetails{
-
-	/* background-color: red; */
-	padding: 40px 0;
-	width: fit-content;
+/* Form Details Styling */
+.pdetails {
+    border: 2px solid #000;
+    padding: 40px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    background-color: #f9f9f9;
 }
 
-table td{
-	padding: 0 10px;
+.pdetails table td {
+    padding: 10px;
 }
 
-.btn{
-	height: 28px;
-	width: 65px;
-	line-height: 10px;
-	margin: 10px 0;
-	float: right;
+/* Input Styles */
+.payment-wrapper input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 10px;
 }
+
+/* Submit Button Styling */
+.btn {
+    height: 40px;
+    width: 80px;
+    line-height: 10px;
+    margin: 10px 0;
+    float: right;
+    background-color: green;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: darkgreen;
+}
+
+/* Table Styling */
+table td {
+    padding: 0 10px;
+}
+
+/* Sticky Footer at the Bottom */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+     /* Ensures some space between form and footer */
+}
+
