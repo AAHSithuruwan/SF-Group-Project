@@ -62,7 +62,7 @@
                     <div class="card-body">
                       <form action="Item-Page.php" name="card-form" method="post"">
                       <h5 class="card-title" >'.$itemName.'</h5><input type="hidden" name="item-id" value="'.$itemId.'"><input type="hidden" name="item-name" value="'.$itemName.'"><input type="hidden" name="item-price" value="'.$itemPrice.'">
-                      <div class="card-bottom"><strong>Rs. '.$itemPrice.'</strong><button type="submit" class="btn btn-primary" name="submit">Buy Now</button></div>
+                      <div class="card-bottom"><strong>Rs. '.$itemPrice.'</strong><button type="submit" class="btn btn-primary" name="submit">Add to cart</button></div>
                     </div>
                     </form>
                   </div>
