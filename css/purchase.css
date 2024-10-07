@@ -8,7 +8,7 @@ html, body {
 }
 
 body {
-	background-image: image-set(url("/assets/purchaseimages/ph4.jpg"));
+	background-image: image-set(url("../assets/purchase.jpg"));
      /* Replace with the path to your image */
     background-size:2790px; /* Makes the background cover the entire area */
     background-position: center; /* Centers the image */
@@ -30,7 +30,7 @@ body {
 
 /* Payment Wrapper */
 .payment-wrapper {
-	opacity: 50%;
+	/* opacity: 50%; */
 	display: flex;
     flex-direction: column;
     padding: 10%; /* Adjusted padding for consistency */
