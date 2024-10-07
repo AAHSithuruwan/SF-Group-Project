@@ -86,7 +86,7 @@
                             <div class="card-body">
                             <form action="Item-Page.php" name="card-form" method="post">
                             <h5 class="card-title" >'.$record['itemName'].'</h5><input type="hidden" name="item-id" value="'.$record['itemId'].'"><input type="hidden" name="item-name" value="'.$record['itemName'].'"><input type="hidden" name="item-price" value="'.$record['sellingPrice'].'">
-                            <div class="card-bottom"><strong>'."RS. ".$record['sellingPrice'].'</strong><button type="submit" class="btn btn-primary" name="submit">Buy Now</button></div>
+                            <div class="card-bottom"><strong>'."RS. ".$record['sellingPrice'].'</strong><button type="submit" class="btn btn-primary" name="submit">Add to cart</button></div>
                             </div>
                             </form>
                         </div>
