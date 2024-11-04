@@ -1,0 +1,65 @@
+@charset "utf-8";
+#wrapper1{
+	padding-top: 130px;
+	/*background-color: red;*/
+}
+
+.col-lg-6 .jumbotron{
+    background-color: white;
+    border-style: solid;
+    border-color: #000000;
+}
+
+.col-lg-6 .jumbotron .display-4 {
+	font-weight: bold;
+	color: #000000;
+	text-align: left;
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 35px;
+}
+.col-lg-6 .jumbotron .lead {
+	font-weight: 500;
+	text-align: left;
+	font-style: oblique;
+	font-size: 16px;
+}
+.col-lg-6 .jumbotron .display-41 {
+	color: #1031F3;
+}
+.col-lg-6 .jumbotron #button {
+	color: #000000;
+	background-color: #269D1F;
+	font-weight: bolder;
+	width: 100px;
+	height: 50px;
+}
+
+.col-lg-6 .jumbotron #button1 {
+	color: #000000;
+	background-color: #A619B1;
+	font-weight: bolder;
+	width: 100px;
+	height: 50px;
+}
+
+
+
+.jumbotron p #b1 {
+    background-color: #139749;
+}
+.jumbotron p #b2 {
+    background-color: #A10AB7;
+}
+@media screen and (max-width : 992px) {
+	#wrapper1 {
+		padding-top: 170px;
+	}
+}
+
+#accordion1 form #b2 {
+    border-width: 0px;
+    background-image: -webkit-linear-gradient(270deg,rgba(21,198,215,1.00) 0%,rgba(8,132,118,1.00) 100%);
+    background-image: -moz-linear-gradient(270deg,rgba(21,198,215,1.00) 0%,rgba(8,132,118,1.00) 100%);
+    background-image: -o-linear-gradient(270deg,rgba(21,198,215,1.00) 0%,rgba(8,132,118,1.00) 100%);
+    background-image: linear-gradient(180deg,rgba(21,198,215,1.00) 0%,rgba(8,132,118,1.00) 100.00%);
+}

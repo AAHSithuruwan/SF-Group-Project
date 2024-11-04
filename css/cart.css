@@ -1,0 +1,28 @@
+.content-wrapper {
+	padding-top: 130px;
+	/*background-color: red;*/
+}
+
+@media screen and (max-width : 992px) {
+	.content-wrapper {
+		padding-top: 170px;
+	}
+}
+
+#cart-update-btn{
+    float: right;
+}
+
+.qty-input{
+    border: none;
+    background-color: rgb(240, 240, 240);
+    width: 100px;
+    padding: 7px 7px;
+    border-radius: 5px;
+}
+
+#total-amount{
+    font-weight: bold;
+}
+
+
